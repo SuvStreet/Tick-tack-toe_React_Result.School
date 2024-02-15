@@ -1,9 +1,9 @@
 import { FieldLayout } from '../../Layout'
 
-export const FieldContainer = () => {
+export const FieldContainer = ({...props}) => {
   return (
     <>
-      <FieldLayout />
+      <FieldLayout field={props.field} setField={props.setField}/>
     </>
   )
 }
