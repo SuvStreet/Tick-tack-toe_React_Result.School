@@ -64,11 +64,13 @@
 .front.cross {
 	background: url('../../assets/cross.svg') no-repeat center;
 	background-size: 50%;
+	z-index: 2;
 }
 
 .front.zero {
 	background: url('../../assets/zero.svg') no-repeat center;
 	background-size: 50%;
+	z-index: 2;
 }
 
 .cell.active .front {
