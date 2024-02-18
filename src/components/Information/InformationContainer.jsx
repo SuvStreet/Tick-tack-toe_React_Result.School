@@ -1,8 +1,8 @@
 import { InformationLayout } from '../../Layout'
 
-import cross from '../../assets/cross.png'
-import zero from '../../assets/zero.png'
-import sleep from '../../assets/sleep.png'
+import cross from '../../assets/cross.svg'
+import zero from '../../assets/zero.svg'
+import sleep from '../../assets/sleep.svg'
 
 const imegesResultGame = {
 	winnerCross: {
@@ -20,8 +20,10 @@ const imegesResultGame = {
 }
 
 export const InformationContainer = ({ ...props }) => {
+	
 	const resultGames = () => {
-		if (props.isGameEnded) {
+
+		if (props.isGameEnded && !props.isDraw) {
       switch (props.currentPlayer.toLowerCase()) {
         case 'x':
           return imegesResultGame.winnerCross
@@ -29,9 +31,9 @@ export const InformationContainer = ({ ...props }) => {
         case '0':
           return imegesResultGame.winnerZero
           break
-        default:
-          return imegesResultGame.draw
       }
+		} else {
+			return imegesResultGame.draw
 		}
 	}
 
@@ -42,6 +44,7 @@ export const InformationContainer = ({ ...props }) => {
 					isGameEnded={props.isGameEnded}
 					isDraw={props.isDraw}
 					resultGames={resultGames()}
+					handleClickRestart={props.handleClickRestart}
 				/>
 			)}
 		</>

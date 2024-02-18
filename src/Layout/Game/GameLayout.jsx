@@ -1,22 +1,30 @@
 import { InformationContainer, FieldContainer } from '../../components'
 
-import styles from './GameLayout.module.css'
-
-export const GameLayout = ({ ...props }) => {
+export const GameLayout = ({
+	onField,
+	onSetField,
+	isGameEnded,
+	isDraw,
+	setCurrentPlayer,
+	currentPlayer,
+	onHandleClick,
+	handleClickRestart
+}) => {
 	return (
 		<>
-			{/* {props.isGameEnded ? (
-				<InformationContainer isGameEnded={props.isGameEnded} isDraw={props.isDraw} />
-			) : (
-				<FieldContainer field={props.field} setField={props.setField} />
-			)} */}
-
 			<InformationContainer
-				isGameEnded={props.isGameEnded}
-				isDraw={props.isDraw}
-				currentPlayer={props.currentPlayer}
+				isGameEnded={isGameEnded}
+				isDraw={isDraw}
+				currentPlayer={currentPlayer}
+				handleClickRestart={handleClickRestart}
 			/>
-			<FieldContainer field={props.field} setField={props.setField} />
+			<FieldContainer
+				onField={onField}
+				onSetField={onSetField}
+				currentPlayer={currentPlayer}
+				setCurrentPlayer={setCurrentPlayer}
+				onHandleClick={onHandleClick}
+			/>
 		</>
 	)
 }

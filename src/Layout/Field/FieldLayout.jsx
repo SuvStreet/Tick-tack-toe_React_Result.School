@@ -1,50 +1,28 @@
 import styles from './FieldLayout.module.css'
 
-export const FieldLayout = ({ field, setField }) => {
-	// console.log('field', field)
-	// console.log('setField', setField)
+const switchClass = (cell) => {
+	switch (cell) {
+		case 'x':
+			return styles.cross
+		case '0':
+			return styles.zero
+		default:
+			return ''
+	}
+}
 
+export const FieldLayout = ({ field, handleClick }) => {
 	return (
 		<>
-			<div className={styles.field}>
-				{field.map((row, i) => {
+			<div className={styles.field} onClick={handleClick}>
+				{field.map((cell, i) => {
 					return (
-						<div className={styles.row} key={i}>
-							{row.map((cell, j) => {
-								return (
-									<button
-										className={styles.cell}
-										key={j}
-										// onClick={() => {
-										// 	setField((prev) => {
-										// 		const copy = [...prev]
-										// 		copy[i][j] = 'X'
-										// 		return copy
-										// 	})
-										// }}
-									>
-										{cell}
-									</button>
-								)
-							})}
+						<div className={styles.cell + ' ' + (cell ? styles.active : '')} key={i}>
+							<div className={styles.front + ' ' + switchClass(cell)}></div>
+							<div className={styles.back} id={i}></div>
 						</div>
 					)
 				})}
-				{/* <div className={styles.row}>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-				</div> */}
-				{/* <div className={styles.row}>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-				</div>
-				<div className={styles.row}>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-					<button className={styles.cell}></button>
-				</div> */}
 			</div>
 		</>
 	)
