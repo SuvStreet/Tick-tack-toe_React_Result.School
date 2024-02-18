@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import { InformationContainer, FieldContainer } from '../../components'
 
 export const GameLayout = ({
@@ -27,4 +29,15 @@ export const GameLayout = ({
 			/>
 		</>
 	)
+}
+
+GameLayout.propTypes = {
+	onField: PropTypes.array,
+	onSetField: PropTypes.func,
+	isGameEnded: PropTypes.bool,
+	isDraw: PropTypes.bool,
+	setCurrentPlayer: PropTypes.func,
+	currentPlayer: PropTypes.string,
+	onHandleClick: PropTypes.func,
+	handleClickRestart: PropTypes.func
 }

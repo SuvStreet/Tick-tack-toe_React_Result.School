@@ -1,10 +1,12 @@
+import PropTypes from 'prop-types'
+
 import { InformationLayout } from '../../Layout'
 
 import cross from '../../assets/cross.svg'
 import zero from '../../assets/zero.svg'
 import sleep from '../../assets/sleep.svg'
 
-const imegesResultGame = {
+const imagesResultGame = {
 	winnerCross: {
 		src: cross,
 		title: 'Победа!',
@@ -19,34 +21,42 @@ const imegesResultGame = {
 	},
 }
 
-export const InformationContainer = ({ ...props }) => {
-	
+export const InformationContainer = ({
+	isGameEnded,
+	currentPlayer,
+	handleClickRestart,
+	isDraw,
+}) => {
 	const resultGames = () => {
-
-		if (props.isGameEnded && !props.isDraw) {
-      switch (props.currentPlayer.toLowerCase()) {
-        case 'x':
-          return imegesResultGame.winnerCross
-          break
-        case '0':
-          return imegesResultGame.winnerZero
-          break
-      }
+		if (isGameEnded && !isDraw) {
+			switch (currentPlayer.toLowerCase()) {
+				case 'x':
+					return imagesResultGame.winnerCross
+				case '0':
+					return imagesResultGame.winnerZero
+			}
 		} else {
-			return imegesResultGame.draw
+			return imagesResultGame.draw
 		}
 	}
 
 	return (
 		<>
-			{props.isGameEnded && (
+			{isGameEnded && (
 				<InformationLayout
-					isGameEnded={props.isGameEnded}
-					isDraw={props.isDraw}
+					isGameEnded={isGameEnded}
+					isDraw={isDraw}
 					resultGames={resultGames()}
-					handleClickRestart={props.handleClickRestart}
+					handleClickRestart={handleClickRestart}
 				/>
 			)}
 		</>
 	)
+}
+
+InformationContainer.propTypes = {
+	isGameEnded: PropTypes.bool,
+	currentPlayer: PropTypes.string,
+	handleClickRestart: PropTypes.func,
+	isDraw: PropTypes.bool
 }
