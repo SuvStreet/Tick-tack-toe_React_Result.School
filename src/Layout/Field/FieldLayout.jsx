@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import styles from './FieldLayout.module.css'
 
 const switchClass = (cell) => {
@@ -26,4 +28,9 @@ export const FieldLayout = ({ field, handleClick }) => {
 			</div>
 		</>
 	)
+}
+
+FieldLayout.propTypes = {
+	field: PropTypes.array,
+	handleClick: PropTypes.func
 }

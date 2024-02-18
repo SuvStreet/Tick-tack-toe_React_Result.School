@@ -1,11 +1,16 @@
-import { FieldLayout } from '../../Layout'
-import { checkWin } from '../../actions/utils'
+import PropTypes from 'prop-types'
 
-export const FieldContainer = ({ ...props }) => {
-	
+import { FieldLayout } from '../../Layout'
+
+export const FieldContainer = ({ onField, onHandleClick }) => {
 	return (
 		<>
-			<FieldLayout field={props.onField} handleClick={props.onHandleClick} />
+			<FieldLayout field={onField} handleClick={onHandleClick} />
 		</>
 	)
+}
+
+FieldContainer.propTypes = {
+	onField: PropTypes.array,
+	onHandleClick: PropTypes.func,
 }
