@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 import styles from './InformationLayout.module.css'
 import resetButton from '../../assets/reset-button.png'
 
@@ -17,9 +15,4 @@ export const InformationLayout = ({ handleClickRestart, resultGames }) => {
 			</div>
 		</>
 	)
-}
-
-InformationLayout.propTypes = {
-	handleClickRestart: PropTypes.func,
-	resultGames: PropTypes.object
 }
